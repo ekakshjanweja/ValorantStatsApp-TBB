@@ -10,6 +10,7 @@ const customStyle = StyleSheet.create({
     flex: 1,
     backgroundColor: '#080808',
     margin: 10,
+    borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -18,19 +19,31 @@ const customStyle = StyleSheet.create({
     flex: 7,
     backgroundColor: '#080808',
     margin: 20,
+    borderRadius: 10,
     justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  counterContainer: {
+    backgroundColor: '#red',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    flexDirection: 'row',
   },
 
   counter: {
-    flex: 1,
-    backgroundColor: '#080808',
-    margin: 20,
+    margin: 50,
+    backgroundColor: '#222222',
+    height: 50,
+    width: 50,
+    borderRadius: 10,
+    alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'row',
   },
 
   text: {
     color: 'white',
+    fontSize: 20,
   },
 });
 
