@@ -13,7 +13,7 @@ export default function App() {
   };
 
   const decrement = () => {
-    setCounter(counter => counter - 1);
+    if (counter > 0) setCounter(counter => counter - 1);
   };
 
   return (
