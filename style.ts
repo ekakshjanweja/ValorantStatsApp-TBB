@@ -24,8 +24,19 @@ const customStyle = StyleSheet.create({
     alignItems: 'center',
   },
 
+  textInput: {
+    borderRadius: 20,
+    borderWidth: 2,
+    width: 300,
+    borderColor: 'white',
+    margin: 20,
+    padding: 20,
+    color: 'white',
+    fontSize: 20,
+  },
+
   counterContainer: {
-    backgroundColor: '#red',
+    flex: 10,
     alignItems: 'center',
     justifyContent: 'space-around',
     flexDirection: 'row',

@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
-import {View, Text, StatusBar, TouchableOpacity} from 'react-native';
+import {View, Text, StatusBar, TextInput, TouchableOpacity} from 'react-native';
 
 //Importing external style
 
 import {customStyle} from './style.ts';
 
 export default function App() {
+  const [inputBoxValue, setInputBoxValue] = useState('');
+
   const [counter, setCounter] = useState(19);
 
   const increment = () => {
@@ -23,7 +25,14 @@ export default function App() {
         <Text style={customStyle.text}>Hello World</Text>
       </View>
       <View style={customStyle.lowerContainer}>
-        <View style={customStyle.counterContainer}>
+        <TextInput
+          style={customStyle.textInput}
+          value={inputBoxValue}
+          onChangeText={value => {
+            setInputBoxValue(value);
+          }}></TextInput>
+        <Text style={customStyle.text}>{inputBoxValue}</Text>
+        <View tyle={customStyle.counterContainer}>
           <TouchableOpacity onPress={decrement}>
             <View style={customStyle.counter}>
               <Text style={customStyle.text}>-</Text>
