@@ -6,6 +6,7 @@ import {
   TextInput,
   ScrollView,
   FlatList,
+  TouchableOpacity,
 } from 'react-native';
 
 //Importing external style
@@ -53,6 +54,17 @@ export default function App() {
       name: 'b',
     },
   ]);
+
+  const handleClick = itemId => {
+    setData(prevData => {
+      return prevData.filter(tempData => {
+        if (tempData.id != itemId) {
+          return tempData;
+        }
+      });
+    });
+  };
+
   return (
     <View style={customStyle.mainContainer}>
       <StatusBar backgroundColor={'#121212'} />
@@ -75,10 +87,12 @@ export default function App() {
           data={data}
           renderItem={({item}) => {
             return (
-              <View style={customStyle.listStyle}>
-                <Text style={customStyle.text}>{item.id}</Text>
-                <Text style={customStyle.text}>{item.name}</Text>
-              </View>
+              <TouchableOpacity onPress={() => handleClick(item.id)}>
+                <View style={customStyle.listStyle}>
+                  <Text style={customStyle.text}>{item.id}</Text>
+                  <Text style={customStyle.text}>{item.name}</Text>
+                </View>
+              </TouchableOpacity>
             );
           }}
         />
