@@ -54,7 +54,7 @@ export default function App() {
               <View style={customStyle.listStyle}>
                 <Image
                   source={{
-                    uri: listData.displayIcon,
+                    uri: listData.skins[5].displayIcon,
                   }}
                   style={customStyle.cardImage}
                   resizeMode="contain"
