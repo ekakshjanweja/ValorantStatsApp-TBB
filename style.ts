@@ -18,7 +18,7 @@ const customStyle = StyleSheet.create({
   lowerContainer: {
     flex: 7,
     backgroundColor: '#080808',
-    margin: 20,
+    margin: 10,
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',

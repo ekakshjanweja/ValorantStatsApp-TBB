@@ -8,63 +8,27 @@ import {
   ScrollView,
 } from 'react-native';
 import Axios from 'axios';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 //Importing external style
 
 import {customStyle} from './style.ts';
 import {weaponsApi} from './src/utils/url.js';
+import HomeScreen from './src/screens/HomeScreen.tsx';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [weaponsData, setWeaponsData] = useState([
-    {
-      id: 1,
-      name: 'Ekaksh',
-    },
-
-    {
-      id: 2,
-      name: 'Stomej',
-    },
-  ]);
-
-  useEffect(() => {
-    fetchApiData();
-  }, []);
-
-  const fetchApiData = async () => {
-    try {
-      const response = await Axios.get(weaponsApi);
-      console.log(response);
-      setWeaponsData(response.data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
-    <View style={customStyle.mainContainer}>
-      <StatusBar backgroundColor={'#121212'} />
-      <View style={customStyle.upperContainer}>
-        <Text style={customStyle.text}>Hello World</Text>
-      </View>
-      <View style={customStyle.lowerContainer}>
-        <ScrollView>
-          {weaponsData.map((listData, index) => {
-            return (
-              <View style={customStyle.listStyle}>
-                <Image
-                  source={{
-                    uri: listData.skins[5].displayIcon,
-                  }}
-                  style={customStyle.cardImage}
-                  resizeMode="contain"
-                />
-                <Text style={customStyle.listText}>{listData.displayName}</Text>
-              </View>
-            );
-          })}
-        </ScrollView>
-      </View>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={{headerShown: false}}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
