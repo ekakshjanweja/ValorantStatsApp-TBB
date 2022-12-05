@@ -32,19 +32,18 @@ export default function App() {
             setInputBoxValue(value);
           }}></TextInput>
         <Text style={customStyle.text}>{inputBoxValue}</Text>
-        <View tyle={customStyle.counterContainer}>
-          <TouchableOpacity onPress={decrement}>
-            <View style={customStyle.counter}>
-              <Text style={customStyle.text}>-</Text>
-            </View>
-          </TouchableOpacity>
-          <Text style={customStyle.text}>{counter}</Text>
-          <TouchableOpacity onPress={increment}>
-            <View style={customStyle.counter}>
-              <Text style={customStyle.text}>+</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
+
+        <TouchableOpacity onPress={decrement}>
+          <View style={customStyle.counter}>
+            <Text style={customStyle.text}>-</Text>
+          </View>
+        </TouchableOpacity>
+        <Text style={customStyle.text}>{counter}</Text>
+        <TouchableOpacity onPress={increment}>
+          <View style={customStyle.counter}>
+            <Text style={customStyle.text}>+</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
