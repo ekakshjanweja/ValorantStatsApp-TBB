@@ -24,32 +24,23 @@ const customStyle = StyleSheet.create({
     alignItems: 'center',
   },
 
-  textInput: {
-    borderRadius: 20,
-    borderWidth: 2,
-    width: 300,
-    borderColor: 'white',
-    margin: 20,
-    padding: 20,
-    color: 'white',
-    fontSize: 20,
+  scrollViewStyle: {
+    flex: 1,
   },
 
-  counterContainer: {
-    flex: 10,
-    alignItems: 'center',
-    justifyContent: 'space-around',
+  listStyle: {
+    flex: 1,
     flexDirection: 'row',
-  },
-
-  counter: {
-    margin: 50,
-    backgroundColor: '#222222',
-    height: 50,
-    width: 50,
-    borderRadius: 10,
+    justifyContent: 'space-around',
     alignItems: 'center',
-    justifyContent: 'center',
+    fontSize: 30,
+    backgroundColor: '#222222',
+    marginTop: 20,
+    marginBottom: 20,
+    padding: 10,
+    borderRadius: 20,
+    height: 80,
+    width: 300,
   },
 
   text: {

@@ -1,23 +1,58 @@
 import React, {useState} from 'react';
-import {View, Text, StatusBar, TextInput, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  StatusBar,
+  TextInput,
+  ScrollView,
+  FlatList,
+} from 'react-native';
 
 //Importing external style
 
 import {customStyle} from './style.ts';
 
 export default function App() {
-  const [inputBoxValue, setInputBoxValue] = useState('');
+  const [data, setData] = useState([
+    {
+      id: 1,
+      name: 'Ekaksh',
+    },
 
-  const [counter, setCounter] = useState(19);
+    {
+      id: 2,
+      name: 'Stomej',
+    },
 
-  const increment = () => {
-    setCounter(counter => counter + 1);
-  };
+    {
+      id: 3,
+      name: 'a',
+    },
 
-  const decrement = () => {
-    if (counter > 0) setCounter(counter => counter - 1);
-  };
+    {
+      id: 4,
+      name: 'b',
+    },
+    {
+      id: 5,
+      name: 'Ekaksh',
+    },
 
+    {
+      id: 6,
+      name: 'Stomej',
+    },
+
+    {
+      id: 7,
+      name: 'a',
+    },
+
+    {
+      id: 8,
+      name: 'b',
+    },
+  ]);
   return (
     <View style={customStyle.mainContainer}>
       <StatusBar backgroundColor={'#121212'} />
@@ -25,25 +60,28 @@ export default function App() {
         <Text style={customStyle.text}>Hello World</Text>
       </View>
       <View style={customStyle.lowerContainer}>
-        <TextInput
-          style={customStyle.textInput}
-          value={inputBoxValue}
-          onChangeText={value => {
-            setInputBoxValue(value);
-          }}></TextInput>
-        <Text style={customStyle.text}>{inputBoxValue}</Text>
-
-        <TouchableOpacity onPress={decrement}>
-          <View style={customStyle.counter}>
-            <Text style={customStyle.text}>-</Text>
-          </View>
-        </TouchableOpacity>
-        <Text style={customStyle.text}>{counter}</Text>
-        <TouchableOpacity onPress={increment}>
-          <View style={customStyle.counter}>
-            <Text style={customStyle.text}>+</Text>
-          </View>
-        </TouchableOpacity>
+        {/* <ScrollView style={customStyle.scrollViewStyle}>
+          {data.map((listData, index) => {
+            return (
+              <View style={customStyle.listTyle} key={listData.id}>
+                <Text style={customStyle.text}> {listData.id} </Text>
+                <Text style={customStyle.text}> {listData.name} </Text>
+              </View>
+            );
+          })}
+        </ScrollView> */}
+        <FlatList
+          style={customStyle.scrollViewStyle}
+          data={data}
+          renderItem={({item}) => {
+            return (
+              <View style={customStyle.listStyle}>
+                <Text style={customStyle.text}>{item.id}</Text>
+                <Text style={customStyle.text}>{item.name}</Text>
+              </View>
+            );
+          }}
+        />
       </View>
     </View>
   );
