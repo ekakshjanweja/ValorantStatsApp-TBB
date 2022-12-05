@@ -24,13 +24,14 @@ const customStyle = StyleSheet.create({
     alignItems: 'center',
   },
 
-  scrollViewStyle: {
-    flex: 1,
+  text: {
+    color: 'white',
+    fontSize: 20,
   },
 
   listStyle: {
     flex: 1,
-    flexDirection: 'row',
+
     justifyContent: 'space-around',
     alignItems: 'center',
     fontSize: 30,
@@ -39,14 +40,13 @@ const customStyle = StyleSheet.create({
     marginBottom: 20,
     padding: 10,
     borderRadius: 20,
-    height: 80,
+    height: 200,
     width: 300,
   },
 
-  text: {
-    color: 'white',
-    fontSize: 20,
-  },
+  listText: {color: 'white', fontSize: 14},
+
+  cardImage: {width: 200, height: 100},
 });
 
 export {customStyle};

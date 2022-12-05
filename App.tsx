@@ -1,20 +1,21 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
   StatusBar,
   TextInput,
+  Image,
   ScrollView,
-  FlatList,
-  TouchableOpacity,
 } from 'react-native';
+import Axios from 'axios';
 
 //Importing external style
 
 import {customStyle} from './style.ts';
+import {weaponsApi} from './src/utils/url.js';
 
 export default function App() {
-  const [data, setData] = useState([
+  const [weaponsData, setWeaponsData] = useState([
     {
       id: 1,
       name: 'Ekaksh',
@@ -24,45 +25,20 @@ export default function App() {
       id: 2,
       name: 'Stomej',
     },
-
-    {
-      id: 3,
-      name: 'a',
-    },
-
-    {
-      id: 4,
-      name: 'b',
-    },
-    {
-      id: 5,
-      name: 'Ekaksh',
-    },
-
-    {
-      id: 6,
-      name: 'Stomej',
-    },
-
-    {
-      id: 7,
-      name: 'a',
-    },
-
-    {
-      id: 8,
-      name: 'b',
-    },
   ]);
 
-  const handleClick = itemId => {
-    setData(prevData => {
-      return prevData.filter(tempData => {
-        if (tempData.id != itemId) {
-          return tempData;
-        }
-      });
-    });
+  useEffect(() => {
+    fetchApiData();
+  }, []);
+
+  const fetchApiData = async () => {
+    try {
+      const response = await Axios.get(weaponsApi);
+      console.log(response);
+      setWeaponsData(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -72,30 +48,22 @@ export default function App() {
         <Text style={customStyle.text}>Hello World</Text>
       </View>
       <View style={customStyle.lowerContainer}>
-        {/* <ScrollView style={customStyle.scrollViewStyle}>
-          {data.map((listData, index) => {
+        <ScrollView>
+          {weaponsData.map((listData, index) => {
             return (
-              <View style={customStyle.listTyle} key={listData.id}>
-                <Text style={customStyle.text}> {listData.id} </Text>
-                <Text style={customStyle.text}> {listData.name} </Text>
+              <View style={customStyle.listStyle}>
+                <Image
+                  source={{
+                    uri: listData.displayIcon,
+                  }}
+                  style={customStyle.cardImage}
+                  resizeMode="contain"
+                />
+                <Text style={customStyle.listText}>{listData.displayName}</Text>
               </View>
             );
           })}
-        </ScrollView> */}
-        <FlatList
-          style={customStyle.scrollViewStyle}
-          data={data}
-          renderItem={({item}) => {
-            return (
-              <TouchableOpacity onPress={() => handleClick(item.id)}>
-                <View style={customStyle.listStyle}>
-                  <Text style={customStyle.text}>{item.id}</Text>
-                  <Text style={customStyle.text}>{item.name}</Text>
-                </View>
-              </TouchableOpacity>
-            );
-          }}
-        />
+        </ScrollView>
       </View>
     </View>
   );
