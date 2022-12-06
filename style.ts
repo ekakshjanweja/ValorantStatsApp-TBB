@@ -24,6 +24,22 @@ const customStyle = StyleSheet.create({
     alignItems: 'center',
   },
 
+  tabs: {
+    flexDirection: 'row',
+  },
+
+  tabButton: {
+    margin: 20,
+    padding: 10,
+    width: 100,
+    height: 50,
+    borderRadius: 10,
+    backgroundColor: '#fa4454',
+    color: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
   text: {
     color: 'white',
     fontSize: 20,
