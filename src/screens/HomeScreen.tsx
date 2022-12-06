@@ -17,9 +17,7 @@ import {customStyle} from '../../style.ts';
 import {weaponsApi} from '../utils/url';
 
 export default function HomeScreen({navigation}) {
-  const [weaponCategory, setWeaponCategory] = useState(
-    'EEquippableCategory::Sidearm',
-  );
+  const [weaponCategory, setWeaponCategory] = useState('All');
   const [weaponsData, setWeaponsData] = useState([
     {
       id: 1,
@@ -166,18 +164,29 @@ export default function HomeScreen({navigation}) {
                 );
             } else {
               return (
-                <View style={customStyle.listStyle} key={listData.uuid}>
-                  <Image
-                    source={{
-                      uri: listData.displayIcon,
-                    }}
-                    style={customStyle.cardImage}
-                    resizeMode="contain"
-                  />
-                  <Text style={customStyle.listText}>
-                    {listData.displayName}
-                  </Text>
-                </View>
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate('WeaponDetailScreen', {
+                      displayIcon: listData.displayIcon,
+                      displayName: listData.displayName,
+                      category: listData.category,
+                      weaponStats: listData.weaponStats,
+                      shopData: listData.shopData,
+                    });
+                  }}>
+                  <View style={customStyle.listStyle} key={listData.uuid}>
+                    <Image
+                      source={{
+                        uri: listData.displayIcon,
+                      }}
+                      style={customStyle.cardImage}
+                      resizeMode="contain"
+                    />
+                    <Text style={customStyle.listText}>
+                      {listData.displayName}
+                    </Text>
+                  </View>
+                </TouchableOpacity>
               );
             }
           })}
