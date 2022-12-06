@@ -16,7 +16,7 @@ import Axios from 'axios';
 import {customStyle} from '../../style.ts';
 import {weaponsApi} from '../utils/url';
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
   const [weaponCategory, setWeaponCategory] = useState(
     'EEquippableCategory::Sidearm',
   );
@@ -59,7 +59,7 @@ export default function HomeScreen() {
       <View style={customStyle.upperContainer}>
         <Text style={customStyle.text}>Valorant Weapons</Text>
       </View>
-      <View style={customStyle.upperContainer}>
+      <View>
         <ScrollView style={customStyle.tabs} horizontal={true}>
           <TouchableOpacity
             onPress={() => {
@@ -139,18 +139,30 @@ export default function HomeScreen() {
             if (weaponCategory != 'All') {
               if (listData.category === weaponCategory)
                 return (
-                  <View style={customStyle.listStyle} key={listData.uuid}>
-                    <Image
-                      source={{
-                        uri: listData.displayIcon,
-                      }}
-                      style={customStyle.cardImage}
-                      resizeMode="contain"
-                    />
-                    <Text style={customStyle.listText}>
-                      {listData.displayName}
-                    </Text>
-                  </View>
+                  <TouchableOpacity
+                    onPress={() => {
+                      navigation.navigate('WeaponDetailScreen', {
+                        displayIcon: listData.displayIcon,
+                        displayName: listData.displayName,
+                        category: listData.category,
+                        weaponStats: listData.weaponStats,
+                        shopData: listData.shopData,
+                      });
+                    }}>
+                    <View style={customStyle.listStyle} key={listData.uuid}>
+                      <Image
+                        source={{
+                          uri: listData.displayIcon,
+                        }}
+                        style={customStyle.cardImage}
+                        resizeMode="contain"
+                      />
+
+                      <Text style={customStyle.listText}>
+                        {listData.displayName}
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
                 );
             } else {
               return (

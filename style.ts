@@ -24,6 +24,15 @@ const customStyle = StyleSheet.create({
     alignItems: 'center',
   },
 
+  lowerContainerAlt: {
+    flex: 7,
+    backgroundColor: '#080808',
+    margin: 10,
+    borderRadius: 10,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+
   tabs: {
     flexDirection: 'row',
   },
@@ -46,8 +55,6 @@ const customStyle = StyleSheet.create({
   },
 
   listStyle: {
-    flex: 1,
-
     justifyContent: 'space-around',
     alignItems: 'center',
     fontSize: 30,
@@ -56,6 +63,18 @@ const customStyle = StyleSheet.create({
     marginBottom: 20,
     padding: 10,
     borderRadius: 20,
+    height: 200,
+    width: 300,
+  },
+
+  listStyleAlt: {
+    justifyContent: 'space-around',
+    alignItems: 'flex-start',
+    fontSize: 30,
+    backgroundColor: '#141414',
+    margin: 20,
+    padding: 20,
+    borderRadius: 15,
     height: 200,
     width: 300,
   },

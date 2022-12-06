@@ -16,6 +16,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {customStyle} from './style.ts';
 import {weaponsApi} from './src/utils/url.js';
 import HomeScreen from './src/screens/HomeScreen.tsx';
+import WeaponDetailScreen from './src/screens/WeaponDetailScreen.tsx';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,11 @@ export default function App() {
         <Stack.Screen
           name="HomeScreen"
           component={HomeScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="WeaponDetailScreen"
+          component={WeaponDetailScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
